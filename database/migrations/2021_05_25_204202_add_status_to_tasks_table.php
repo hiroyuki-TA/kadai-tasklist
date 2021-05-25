@@ -15,6 +15,7 @@ class AddStatusToTasksTable extends Migration
     {
         Schema::table('tasks', function (Blueprint $table) {
              $table->string('title');
+             $table->string('status');
         });
     }
 
