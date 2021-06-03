@@ -14,9 +14,7 @@ class UserIdToTasksTable extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-             $table->unsignedBigInteger('user_id');
-            // 外部キー制約
-             $table->foreign('user_id')->references('id')->on('users');
+            //
         });
     }
 
@@ -27,8 +25,8 @@ class UserIdToTasksTable extends Migration
      */
     public function down()
     {
-       $table->dropForeign('tasks_user_id_foreign');
-         Schema::dropIfExists('tasks');
-        
+        Schema::table('tasks', function (Blueprint $table) {
+            //
+        });
     }
 }
