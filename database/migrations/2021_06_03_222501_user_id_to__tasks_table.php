@@ -17,7 +17,7 @@ class UserIdToTasksTable extends Migration
              $table->unsignedBigInteger('user_id');
              
              // 外部キー制約
-             $table->foreign('user_id')->references('id')->on('tasks');
+             $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -28,7 +28,16 @@ class UserIdToTasksTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('tasks_user_id_foreign');
-        Schema::dropIfExists('tasks');
-    }
+            
+            
+            Schema::table('tasks', function (Blueprint $table) {
+            $table->dropForeign('tasks_user_id_foreign');
+            
+            $table->dropColumn('user_id');
+            
+           /** down()メソッドでは、1. 外部キー制約の削除し、
+                2. user_idカラムを削除するようにしましょう。
+            */
+        });
+    }    
 }
