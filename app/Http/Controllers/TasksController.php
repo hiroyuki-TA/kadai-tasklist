@@ -117,7 +117,7 @@ class TasksController extends Controller
      */
     public function show($id)
     {
-        $task = App\Task::findOrFail($id);
+        $task =\App\Task::findOrFail($id);
         
          if (\Auth::id() === $task->user_id) {
         
@@ -138,7 +138,7 @@ class TasksController extends Controller
     public function edit($id)
     {
              // idの値でメッセージを検索して取得
-        $task = App\Task::findOrFail($id);
+        $task =\App\Task::findOrFail($id);
         
         if (\Auth::id() === $task->user_id) {
 
