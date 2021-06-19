@@ -35,6 +35,12 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        //guestはログインしていない閲覧者のこと
+        /**
+         * guest middlewareはアクションの実行前に
+         * ログイン状態を確認し、ログインしていない場合、
+         * そのまま実行、ログイン済みの場合別のURLへとばす
+         */ 
         $this->middleware('guest')->except('logout');
     }
 }
