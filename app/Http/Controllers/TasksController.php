@@ -191,8 +191,7 @@ class TasksController extends Controller
         /**
          * findOrFailはfindと同じく、指定されたレコード
          * を取得する。
-         * しかし、findOrFail はレコードが存在しない時
-         * に404エラーをだす。
+         * findOrFail はレコードが存在しない時に404エラーをだす。
          */
           // idの値でメッセージを検索して取得
         $task = \App\Task::findOrFail($id);
