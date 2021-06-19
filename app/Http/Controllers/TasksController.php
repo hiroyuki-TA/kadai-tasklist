@@ -72,11 +72,13 @@ class TasksController extends Controller
      */
     public function create()
     {
+        
         $task = new task;
         
         return view ('tasks.create',[
             'task'=> $task,
             ]);
+        
     }
 
     /**
@@ -169,12 +171,14 @@ class TasksController extends Controller
         ]);
         
         // idの値でメッセージを検索して取得
-        $task = Task::findOrFail($id);
+        $task = \App\Task::findOrFail($id);
+        
         // メッセージを更新
+         if (\Auth::id() === $task->user_id) {
         $task->status = $request->status;    // 追加
         $task->content = $request->content;
         $task->save();
-        
+         }
              // トップページへリダイレクトさせる
         return redirect('/');
     
