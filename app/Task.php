@@ -11,7 +11,7 @@ class Task extends Model
      * 通常は、すべてのカラムを「一気に保存不可」であるため
      *
     */
-     protected $fillable = ['content','status','user_'];
+     protected $fillable = ['content','status','user_id'];
      
      /**
      * この投稿を所有するユーザ。（ Userモデルとの関係を定義）

@@ -10,8 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
+/**
+ * HTTPメソッド
+ * POST    作成 (create)
+ * GET     取得 (read)
+ * PUT     更新 (update)
+ * DELETE  削除 (delete)
+ */
+ 
+ /**
+  * Controller名 @ アクション名 
+  */
+//topページをTasksControllerのindexに設定
 Route::get('/', 'TasksController@index');
 Route::resource('tasks', 'TasksController');
 
