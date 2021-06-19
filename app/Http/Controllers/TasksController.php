@@ -117,7 +117,7 @@ class TasksController extends Controller
      */
     public function show($id)
     {
-        $task = Task::findOrFail($id);
+        $task = App\Task::findOrFail($id);
         
          if (\Auth::id() === $task->user_id) {
         
@@ -138,12 +138,17 @@ class TasksController extends Controller
     public function edit($id)
     {
              // idの値でメッセージを検索して取得
-        $task = Task::findOrFail($id);
+        $task = App\Task::findOrFail($id);
+        
+        if (\Auth::id() === $task->user_id) {
 
         // メッセージ編集ビューでそれを表示
         return view('tasks.edit', [
             'task' => $task,
         ]);
+        } else {
+          return redirect('/');
+        }
     }
 
     /**
@@ -183,6 +188,12 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
+        /**
+         * findOrFailはfindと同じく、指定されたレコード
+         * を取得する。
+         * しかし、findOrFail はレコードが存在しない時
+         * に404エラーをだす。
+         */
           // idの値でメッセージを検索して取得
         $task = \App\Task::findOrFail($id);
         
